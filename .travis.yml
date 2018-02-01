@@ -6,6 +6,6 @@ services:
 before_script:
   - psql -c 'CREATE DATABASE travis_test;' -U postgres
 env:
-  DATABASE_URL = postgres://postgres@localhost/travis_test
+  - DATABASE_URL = postgres://postgres@localhost/travis_test
 notifications:
   email: false
