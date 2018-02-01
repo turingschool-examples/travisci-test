@@ -5,6 +5,7 @@ services:
   - postgresql
 before_script:
   - psql -c 'CREATE DATABASE travis_test;' -U postgres
+  - knex migrate:latest --env=test
 env:
   - DATABASE_URL=postgres://postgres@localhost/travis_test
 notifications:
