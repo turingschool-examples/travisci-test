@@ -13,7 +13,12 @@ module.exports = {
 
   test: {
     client: 'pg',
-    connection: process.env.DATABASE_URL || 'postgres://localhost/travis_test',
+    connection: {
+        host: '127.0.0.1',
+        user: 'postgres',
+        password: '',
+        database: 'travis_test'
+    },
     migrations: {
       directory: './db/migrations'
     },
