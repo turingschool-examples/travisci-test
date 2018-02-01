@@ -47,7 +47,7 @@ describe('API Routes', () => {
         response.body[0].should.have.property('species');
       })
       .catch(err => {
-        throw JSON.parse(err);
+        throw err;
       });
     });
   });
