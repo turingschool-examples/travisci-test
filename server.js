@@ -8,7 +8,7 @@ const database = require('knex')(configuration);
 app.set('port', process.env.PORT || 3000);
 
 app.get('/', (request, response) => {
-  response.send('Hello travis CI. Changed.');
+  response.send('Hello travis CI.');
 });
 
 app.get('/api/v1/penguins', (request, response) => {
