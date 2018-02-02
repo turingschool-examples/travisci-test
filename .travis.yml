@@ -1,13 +1,17 @@
 language: node_js
 node_js:
-  - "node"
+- node
 services:
-  - postgresql
+- postgresql
 before_script:
-  - psql -c 'CREATE DATABASE travis_test;' -U postgres
-  - knex migrate:latest --env=test
-  - knex seed:run --env=test
+- psql -c 'CREATE DATABASE travis_test;' -U postgres
+- knex migrate:latest --env=test
+- knex seed:run --env=test
 env:
-  - DATABASE_URL=postgres://postgres@localhost/travis_test
+- DATABASE_URL=postgres://postgres@localhost/travis_test
 notifications:
   email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: TvKP7F5VRvMwbqhYV2xI/P/CI3yvQRsw4UE5CnCG2KeQAlJE98vLvKAGgnQwOCpy9pBokXrkX9lfDZeNNWEjEXbQUg9qnwBqKhJuQDJbwVKKeJDswg6vOWzRV7IH3cwBHPAo0VXByOze5xClXik/JSUSchZSVsaR6buQ+YtKpH4B/aGbc4QPYizecsaVg2jkHevOaMRIsxvHJu3GGx9lh+dGWxKx9Z08FrTIa4GXuyPZwXtk6fY3Qs1CELNiOYdXOXacdjBXxr44mrsbKlLKvGcwg11R/bM4pSpOwrSAUggrnWy94fpPU22wuOvWrZCh8ZV/pkoOkux6ihaq6uzijSM4uxoJaTiQ+UkPmXzS/m87fuzbv29V7+AEj+2NwaAKGBCd8vtmncu+JElqLsL4tLj72AAwzFNKSfDRO6BXHTw2BeTRKwzjYO76aUA2jtRwc/vy88Apq02hhqkt9ljyQYmO4aG16LIcT6apgQAVYZfCVdYM+jyRdQ15xoUAMT47XJVeBVY2m9TnRhryvMRrbvDL1sphjyhJi2jz31nWNWahzoDl7J+Rjs8gVphLzzGMHcPWVUDf1AgiHw3LUV7JSdW1pySZHyPc2mqdT4mnOPB+aAufBdPluKDO3SKXKNlwB9R4/6f04CDqoArbmS+7PQWQsCuair+wlttj5hk4yzk=
