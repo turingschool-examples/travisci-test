@@ -1,14 +1,14 @@
 language: node_js
 node_js:
-- node
+  - node
 services:
-- postgresql
+  - postgresql
 before_script:
-- psql -c 'CREATE DATABASE travis_test;' -U postgres
-- knex migrate:latest --env=test
-- knex seed:run --env=test
+  - psql -c 'CREATE DATABASE travis_test;' -U postgres
+  - knex migrate:latest --env=test
+  - knex seed:run --env=test
 env:
-- DATABASE_URL=postgres://postgres@localhost/travis_test
+  - DATABASE_URL=postgres://postgres@localhost/travis_test
 notifications:
   email: false
 deploy:
