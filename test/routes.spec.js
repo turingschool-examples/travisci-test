@@ -24,13 +24,16 @@ describe('Client Routes', () => {
   });
 });
 
-describe('API Routes', () => {
+describe('API Routes', (done) => {
   beforeEach(() => {
     knex.migrate.rollback()
     .then(function() {
       knex.migrate.latest()
       .then(function() {
         return knex.seed.run()
+          .then(() => {
+            done();
+          })
       });
     });
   });
