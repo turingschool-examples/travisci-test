@@ -24,8 +24,8 @@ describe('Client Routes', () => {
   });
 });
 
-describe('API Routes', (done) => {
-  beforeEach(() => {
+describe('API Routes', () => {
+  beforeEach((done) => {
     knex.migrate.rollback()
     .then(function() {
       knex.migrate.latest()
