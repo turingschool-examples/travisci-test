@@ -1,7 +1,12 @@
 language: node_js
 node_js:
-  - "node"
+- node
 services:
-  - postgresql
+- postgresql
 before_script:
-  - psql -c 'create database travis_test;' -U postgres
+- psql -c 'create database travis_test;' -U postgres
+deploy:
+  provider: heroku
+  app: travis-test-penguins
+  api_key:
+    secure: hdy28KBcE9AIiodfvqSXLDpeZMwjLeUdTeU6ELHBWsv5pIH3pcoWeUfooFtlWgISITNJWKp/8xNdbmjUk6M2VIJVp+XyYR41ZTdHPaDrai37yO+9NQYx+n9+dQSq5kRbZ4UwZTA4Uxryq3o2GP931xLwGu6JVjzIIcLSh7wSTFVxcaujZZbNBT563WDSDacm7DyVo9+nKfURSyf7ILuH6zFn83m8VjOMDCnUHLvNdonmPX/qxcKrCSy/icitwrqJ3o0eXuTsNuKyHKrMWO/a1vXgWxi+kr/YB9LdqJdurCoxleaeYUYEQ6/7zHt8u/2d8geaoFhbYKzR21LJeZlnV8g5AV0Qi+ze4E963/HpiG+W0T5WpT7suSyN7fj5D72q47ZFy7AqugA32eKlI1/97bIXyp6I5DfddX/Gumk7rkWkDFIYCKjuoIKv8HQRLsDCGYc6Ib5y4ynO23nn6lkhjsll9UckkwyvOGrU4vGLs27Wn6I8faY1J0J3j3WYiZ95nBJg5yDVdJng/3E1QgoxF3TwDjPEYgsXa8bvKK0M2gIm3Oh55uIq6It7Mr/aIkf/tAMiHvjyn3Jg5F+k9TpiepcUZDyLLNGEOYDR4cGZWObQab4t+/l4U37Q80oBz1FqUSeF0e3iWdTUkKfwux7Z/+rKQTaMNa8CsHankfj3jbs=
