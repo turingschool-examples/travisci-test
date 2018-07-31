@@ -16,7 +16,7 @@ describe('Client Routes', () => {
     .then(response => {
       response.should.have.status(200);
       response.should.be.html;
-      response.res.text.should.equal('Hello travis CI. Skip cleanup.');
+      response.res.text.should.equal('Hello travis CI.');
     })
     .catch(err => {
       throw err;
