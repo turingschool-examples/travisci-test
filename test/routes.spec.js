@@ -10,16 +10,14 @@ const knex = require('knex')(configuration);
 chai.use(chaiHttp);
 
 describe('Client Routes', () => {
-  it('should return the homepage with text', () => {
-    return chai.request(server)
+  it('should return the homepage with text', done => {
+    chai.request(server)
     .get('/')
-    .then(response => {
+    .end((err, response) => {
       response.should.have.status(200);
       response.should.be.html;
       response.res.text.should.equal('Hello travis CI.');
-    })
-    .catch(err => {
-      throw err;
+      done()
     });
   });
 });
@@ -38,19 +36,17 @@ describe('API Routes', () => {
     });
   });
 
-  describe('GET /api/v1/penguins', () => {
+  describe('GET /api/v1/penguins', done => {
     it('should return all of the penguins', () => {
-      return chai.request(server)
+      chai.request(server)
       .get('/api/v1/penguins')
-      .then(response => {
+      .end((err, response) => {
         response.should.have.status(200);
         response.should.be.json;
         response.body.should.be.a('array');
         response.body.length.should.equal(4);
         response.body[0].should.have.property('species');
-      })
-      .catch(err => {
-        throw err;
+        done();
       });
     });
   });
